@@ -9,7 +9,7 @@ namespace ProductReviewManagement
     public class ProductManagement
     {
         //Method to Add Multiple Products in List
-        public static void AddMultipleProductReviewInList()
+        public List<ProductReview> AddMultipleProductReviewInList()
         {
             List<ProductReview> products = new List<ProductReview>()
             {
@@ -39,15 +39,34 @@ namespace ProductReviewManagement
                 new ProductReview(){ ProductId=24,UserId=43,Review="bad",Rating=1,IsLike=false },
                 new ProductReview(){ ProductId=25,UserId=45,Review="bad",Rating=2,IsLike=true },
             };
-            IterateOverProductList(products);
+            return products;
         }
         //Method to get all Product List
-        public static void IterateOverProductList(List<ProductReview> products)
+        public void IterateOverProductList(List<ProductReview> products)
         {
             foreach (ProductReview productReview in products)
             {
                 Console.WriteLine("ProductId=" + productReview.ProductId + "\t" + "UserId:" + productReview.UserId + "\t" + "Review:" + productReview.Review + "\t" +
                                   "Rating:" + productReview.Rating + "\t" + "IsLike:" + productReview.IsLike);
+            }
+        }
+        //Method to Retrieve Top 3 records
+        public void RetrieveTop3Records(List<ProductReview> products)
+        {
+            try
+            {
+                //LINQ query
+                var sortedRatings = (from product in products orderby product.Rating descending select product).ToList();
+                Console.WriteLine("After Sorting list");
+                IterateOverProductList(sortedRatings);
+                var top3Records = sortedRatings.Take(3).ToList();
+                Console.WriteLine();
+                Console.WriteLine("Getting Top 3 Records");
+                IterateOverProductList(top3Records);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }

@@ -11,13 +11,16 @@ namespace ProductReviewManagement
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Product Review Management program");
-            //ProductManagementData();
-            DisplayProducts.CreateDataTable();
+            ProductManagementData();
+            //DisplayProducts.CreateDataTable();
             Console.ReadLine();
         }
         public static void ProductManagementData()
         {
-            ProductManagement.AddMultipleProductReviewInList();
+            ProductManagement p = new ProductManagement();
+            var product = p.AddMultipleProductReviewInList();
+            //p.IterateOverProductList(product);
+            p.RetrieveTop3Records(product);
         }
     }
 }
