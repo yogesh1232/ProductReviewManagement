@@ -84,5 +84,23 @@ namespace ProductReviewManagement
                 Console.WriteLine(ex.Message);
             }
         }
+        //Method to get count of records as per ProductId
+        public void GetCountOfRecordsByProductId(List<ProductReview> list)
+        {
+            try
+            {
+                //LINQ query
+                var CountsProductId = list.GroupBy(p => p.ProductId).Select(x => new { ProductId = x.Key, count = x.Count() }).ToList();
+                Console.WriteLine("Count of Records as per ProductId");
+                foreach (var product in CountsProductId)
+                {
+                    Console.WriteLine("ProductId:" + product.ProductId + "\t" + "Count:" + product.count);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
