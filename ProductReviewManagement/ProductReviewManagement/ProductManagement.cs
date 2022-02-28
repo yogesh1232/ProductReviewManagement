@@ -102,5 +102,23 @@ namespace ProductReviewManagement
                 Console.WriteLine(ex.Message);
             }
         }
+        //Method to retrieve only productId and Review
+        public void RetrieveRecordsByProductIdAndReview(List<ProductReview> list)
+        {
+            try
+            {
+                //LINQ query
+                var CountsProductId = (list.Select(x => new { productId = x.ProductId, review = x.Review })).ToList();
+                Console.WriteLine("Count of Records as per ProductId");
+                foreach (var product in CountsProductId)
+                {
+                    Console.WriteLine("ProductId:" + product.productId + "\t" + "Review:" + product.review);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
