@@ -120,5 +120,21 @@ namespace ProductReviewManagement
                 Console.WriteLine(ex.Message);
             }
         }
+        //Method to Skip Top5 Records
+        public void SkipTop5Records(List<ProductReview> list)
+        {
+            try
+            {
+                List<ProductReview> products = list.Skip(5).ToList();
+                foreach (var product in products)
+                {
+                    Console.WriteLine(product.ProductId + " " + product.UserId + " " + product.Review + " " + product.Rating + " " + product.IsLike);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
