@@ -93,5 +93,18 @@ namespace ProductReviewManagement
                 Console.WriteLine("ProductID: " + list.ProductId + " UserID: " + list.UserId + " Rating: " + list.Rating + " Review: " + list.Review + " isLike: " + list.IsLike);
             }
         }
+        //Get Records of UserId 10
+        public static void RetrieveRecordsWithUserId10(List<ProductReview> ProductReview)
+        {
+            var data = from productReviews in ProductReview
+                       where productReviews.UserId == 10
+                       orderby productReviews.Rating ascending
+                       select productReviews;
+            Console.WriteLine("\n");
+            foreach (var list in data)
+            {
+                Console.WriteLine("ProductID: " + list.ProductId + " UserID: " + list.UserId + " Rating: " + list.Rating + " Review: " + list.Review + " isLike: " + list.IsLike);
+            }
+        }
     }
 }
