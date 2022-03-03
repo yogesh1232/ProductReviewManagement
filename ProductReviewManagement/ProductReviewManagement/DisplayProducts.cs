@@ -51,5 +51,17 @@ namespace ProductReviewManagement
                 Console.WriteLine(ex.Message);
             }
         }
+        public static void GetAllIsLikedReviews()
+        {
+            var Table = from product in table.AsEnumerable()
+                        where (string)product["IsLike"] == "true"
+                        select product;
+
+            Console.WriteLine("\n");
+            foreach (var list in Table)
+            {
+                Console.WriteLine("ProductID: " + list.Field<string>("ProductId") + ", UserID: " + list.Field<string>("UserId") + ", Rating: " + list.Field<string>("Rating") + " , Review: " + list.Field<string>("Review") + " , IsLike: " + list.Field<string>("IsLike"));
+            }
+        }
     }
 }

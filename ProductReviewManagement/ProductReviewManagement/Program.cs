@@ -24,7 +24,11 @@ namespace ProductReviewManagement
             //p.GetRecordsAsPerRatingsAndProductId(product);
             //p.GetCountOfRecordsByProductId(product);
             //p.RetrieveRecordsByProductIdAndReview(product);
-            p.SkipTop5Records(product);
+            //p.SkipTop5Records(product);
+            Console.WriteLine("Data table\n");
+            DisplayProducts.CreateDataTable();
+            DisplayProducts.GetDataFromDataTable();
+            DisplayProducts.GetAllIsLikedReviews();
         }
     }
 }
